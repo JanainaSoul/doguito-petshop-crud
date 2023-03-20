@@ -1,6 +1,6 @@
 //criando template 
 const criaNovaLinha = (nome, email) => {
-    const linhaNovoCliente = document.createElement ('tr')
+    const linhaNovoCliente = document.createElement ('tr') //criando as linhas de cada cliente
     const conteudo = `
         <td class="td" data-td>${nome}</td>
             <td>${email}</td>
@@ -27,10 +27,11 @@ http.send()
 
 //metodo onload
 http.onload = () => {
-    const data = JSON.parse(http.response)  
-    data.forEach(elemento => {
-        tabela.appendChild(criaNovaLinha(elemento.nome, elemento.email))
-    })
+    const data = JSON.parse(http.response)
+    console.log(data) 
+    //data.forEach(elemento => {
+        //tabela.appendChild(criaNovaLinha(elemento.nome, elemento.email))// para cada cliente
+    //})
 }
 
 
