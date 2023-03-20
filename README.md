@@ -17,3 +17,7 @@ Fazer uma requisição http utilizando XMLHttpRequest para buscar todos os clien
 Refatorar o código utilizando promises melhorando a leitura do código.
 
 Utilizar template literals para criar um template html.
+
+
+# Links
+Começando com fetch no Javascript -> https://www.alura.com.br/artigos/comecando-com-fetch-no-javascript
