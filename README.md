@@ -4,6 +4,14 @@
 
 JavaScript
 
+# Comandos 
+
+>>
+npx json-server --watch db.json
+
+>>
+browser-sync start --server --file . --host --port 5000 --startPath telas/lista_cliente.html
+
 # Aprendizados
 
 01 - Comunicação Assincrona
