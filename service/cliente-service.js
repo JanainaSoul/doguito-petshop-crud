@@ -22,26 +22,30 @@ const tabela = document.querySelector('[data-tabela]')
 
 
 const listaClientes = () =>{
-    const promise = new Promise((resolve, reject)=>{
-        const http = new XMLHttpRequest()
-        http.open('GET', 'http://localhost:3000/profile'); //GET p/ pegar os dados do servidor - 2 argumentos 1° o q vc quer pedir pro servidor e o 2° é p onde vou enviar a requisiçao
+    return fetch('http://localhost:3000/profile')
+    .then(resposta => {
+        return resposta.json() // a resposta e texto e temos q fazer json para ele entender q é java script
+    }) // metodo global da API ela ja faz um get e a promise
+    // const promise = new Promise((resolve, reject)=>{
+    //     const http = new XMLHttpRequest()
+    //     http.open('GET', 'http://localhost:3000/profile'); //GET p/ pegar os dados do servidor - 2 argumentos 1° o q vc quer pedir pro servidor e o 2° é p onde vou enviar a requisiçao
     
     
-    http.onload = () => {
-        if(http.status >= 400){
-            reject(JSON.parse(http.response))
-        }else{
-            resolve(JSON.parse(http.response))
-            }
-        }
-        http.send()
-    })
-    //console.log(promise)
-    return promise
+    // http.onload = () => {
+    //     if(http.status >= 400){
+    //         reject(JSON.parse(http.response))
+    //     }else{
+    //         resolve(JSON.parse(http.response))
+    //         }
+    //     }
+    //     http.send()
+    // })
+    // //console.log(promise)
+    // return promise
 }
 
 listaClientes() //fazendo uma promessa - qdo for compeltada vai retornar os dados
-.then(data =>{
+.then(data =>{// .then -> então
     //const data = (http.response)
     //console.log(data) 
     data.forEach(elemento => {
