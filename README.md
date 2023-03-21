@@ -26,6 +26,14 @@ Refatorar o código utilizando promises melhorando a leitura do código.
 
 Utilizar template literals para criar um template html.
 
+02 - Fetch API
+
+Entender a ordem de execução do código JavaScript.
+
+Puxar dados do servidor utilizando a função a fetch api ao invés do xmlhttprequest para modernizar o código.
+
+Refatorar as responsabilidades do código pensando na manutenção da aplicação no futuro.
+
 
 # Links
 Começando com fetch no Javascript -> https://www.alura.com.br/artigos/comecando-com-fetch-no-javascript
