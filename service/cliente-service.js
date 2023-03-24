@@ -25,7 +25,7 @@ const criaCliente = (nome, email) => {
 
 const removeCliente = (id) => { // no db.json cada cliente tem um ID e é isso q vamos usar p deletar
     return fetch(`http://localhost:3000/profile/${id}`, {//faz uma requisição para deletar passando o ID como js valido
-        method: 'DELETE'
+        method: 'DELETE' // metodo delete
     })
 }
 
