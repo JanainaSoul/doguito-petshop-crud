@@ -12,7 +12,7 @@ const criaNovaLinha = (nome, email, id) => {
             <td>${email}</td>
             <td>
                 <ul class="tabela__botoes-controle">
-                    <li><a href="../telas/edita_cliente.html" class="botao-simples botao-simples--editar">Editar</a></li>
+                    <li><a href="../telas/edita_cliente.html?id=${id}" class="botao-simples botao-simples--editar">Editar</a></li>
                     <li><button class="botao-simples botao-simples--excluir" type="button">Excluir</button></li>
                 </ul>
             </td> 
@@ -26,7 +26,7 @@ const criaNovaLinha = (nome, email, id) => {
 //pegando a tabela
 const tabela = document.querySelector('[data-tabela]')
 
-tabela.addEventListener('click', (evento) =>{ // colocar um evento p escutar qdo clicar no botão excluir
+tabela.addEventListener('click', (evento) =>{ // colocar um evento p escutar na tabela qdo clicar no botão excluir
     let ehBotaoDeletar = evento.target.className === 
     'botao-simples botao-simples--excluir'
     if(ehBotaoDeletar){

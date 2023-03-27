@@ -29,10 +29,37 @@ const removeCliente = (id) => { // no db.json cada cliente tem um ID e é isso q
     })
 }
 
+const detalhaCliente = (id) => {
+    return fetch(`http://localhost:3000/profile/${id}`) //vai baixar do cliente especifico
+    .then(resposta => {
+        return resposta.json()
+    })
+}
+
+
+const atualizaCliente = (id, nome, email) => {   // parametros
+    return fetch(`http://localhost:3000/profile/${id}`, {
+        method: 'PUT', //trocar um dado
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ // tem q passar string
+            nome: nome, 
+            email: email
+        })
+    }) 
+    .then(resposta => {
+        return resposta.json() //devolve em objeto js valido
+    })
+}
+
+
 export const clienteService ={
     listaClientes,
     criaCliente,
-    removeCliente
+    removeCliente,
+    detalhaCliente,
+    atualizaCliente
 }
 
 
