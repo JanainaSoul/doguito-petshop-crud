@@ -34,6 +34,16 @@ Puxar dados do servidor utilizando a função a fetch api ao invés do xmlhttpre
 
 Refatorar as responsabilidades do código pensando na manutenção da aplicação no futuro.
 
+03 - Criar e Remover Clientes
+
+Usar a método closest para encontrar o elemento do DOM mais próximo ao que queremos remover
+
+Criar um cliente utilizando o verbo http POST.
+
+Remover um elemento do dom com método remove()
+
+Deletar um cliente utilizando o verbo http DELETE
+
 
 # Links
 Começando com fetch no Javascript -> https://www.alura.com.br/artigos/comecando-com-fetch-no-javascript
