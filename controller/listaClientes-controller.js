@@ -26,23 +26,35 @@ const criaNovaLinha = (nome, email, id) => {
 //pegando a tabela
 const tabela = document.querySelector('[data-tabela]')
 
-tabela.addEventListener('click', (evento) =>{ // colocar um evento p escutar na tabela qdo clicar no botão excluir
+tabela.addEventListener('click', async (evento) =>{ // colocar um evento p escutar na tabela qdo clicar no botão excluir - async=função assincrona
     let ehBotaoDeletar = evento.target.className === 
     'botao-simples botao-simples--excluir'
     if(ehBotaoDeletar){
-        const linhaCliente = evento.target.closest('[data-id]') // mais proximo da TR
-        let id = linhaCliente.dataset.id
-        clienteService.removeCliente(id) //deletando cliente da API mas tb temos q deletar o elemento HTML
-        .then(() => {
-            linhaCliente.remove() //remover a tr inteira
-        })
-
+        try {
+            const linhaCliente = evento.target.closest('[data-id]') // mais proximo da TR
+            let id = linhaCliente.dataset.id
+           await clienteService.removeCliente(id) //deletando cliente da API mas tb temos q deletar o elemento HTML- com o await vc pode remover o .then
+            //.then(() => { - com o await vc pode remover o .then - vc ganha legebilidade
+                linhaCliente.remove() //remover a tr inteira
+            }
+            catch(erro){
+                console.log(erro)
+                window.location.href = '../telas/erro.html'
+        }
     }
 })
 
-clienteService.listaClientes() //fazendo uma promessa - qdo for compeltada vai retornar os dados
-.then(data =>{// .then -> então
-    data.forEach(elemento => {
-        tabela.appendChild(criaNovaLinha(elemento.nome, elemento.email, elemento.id))// para cada cliente
-    })
-})
+const render = async ()=> {// função render renderiza dados na tela
+    try {
+        const listaClientes = await clienteService.listaClientes() //fazendo uma promessa - qdo for compeltada vai retornar os dados
+        //.then(data =>{// .then -> então
+            listaClientes.forEach(elemento => {
+                tabela.appendChild(criaNovaLinha(elemento.nome, elemento.email, elemento.id))// para cada cliente
+            })
+    }
+    catch(erro){
+        console.log(erro)
+        window.location.href = '../telas/erro.html'
+    }
+}
+render()

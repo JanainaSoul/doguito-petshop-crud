@@ -3,7 +3,10 @@
 const listaClientes = () =>  {
     return fetch(`http://localhost:3000/profile`)
     .then(resposta => {
-        return resposta.json()
+        if(resposta.ok){
+            return resposta.json()
+        }throw new Error ('Não foi possível listar os clientes')
+        
     })
 }
 
@@ -19,20 +22,30 @@ const criaCliente = (nome, email) => {
         })
     })
     .then( resposta => {
-        return resposta.body
+        if(resposta.ok){
+            return resposta.body
+        }        
+        throw new Error ('Ñão foi possível criar um cliente')
     })
 }
 
 const removeCliente = (id) => { // no db.json cada cliente tem um ID e é isso q vamos usar p deletar
     return fetch(`http://localhost:3000/profile/${id}`, {//faz uma requisição para deletar passando o ID como js valido
         method: 'DELETE' // metodo delete
+    }).then(resposta => {
+        if(!resposta.ok){
+            throw new Error ('Não foi possível remover um cliente')
+        }
     })
 }
 
 const detalhaCliente = (id) => {
     return fetch(`http://localhost:3000/profile/${id}`) //vai baixar do cliente especifico
     .then(resposta => {
-        return resposta.json()
+        if(resposta.ok){
+            return resposta.json()
+        }        
+        throw new Error ('Não foi possível editar o cliente')
     })
 }
 
@@ -49,7 +62,11 @@ const atualizaCliente = (id, nome, email) => {   // parametros
         })
     }) 
     .then(resposta => {
-        return resposta.json() //devolve em objeto js valido
+        if(resposta.ok){
+            return resposta.json() //devolve em objeto js valido
+        }        
+        throw new Error ('Não foi possível atualizar o cliente')
+        
     })
 }
 
