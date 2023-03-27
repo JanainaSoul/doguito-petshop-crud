@@ -20,18 +20,22 @@ const criaNovaLinha = (nome, email, id) => {
 
         linhaNovoCliente.innerHTML = conteudo
         linhaNovoCliente.dataset.id = id //criamos um data atributs chamado ID e passei o ID como propriedade
-        console.log(linhaNovoCliente)
         return linhaNovoCliente
 
 }
 //pegando a tabela
 const tabela = document.querySelector('[data-tabela]')
 
-tabela.addEventListener('click', (evento) =>{ // colocar um evento p escutar qdo clicar no botão
-    let botaoDeletar = evento.target.className === 
+tabela.addEventListener('click', (evento) =>{ // colocar um evento p escutar qdo clicar no botão excluir
+    let ehBotaoDeletar = evento.target.className === 
     'botao-simples botao-simples--excluir'
     if(ehBotaoDeletar){
+        const linhaCliente = evento.target.closest('[data-id]') // mais proximo da TR
+        let id = linhaCliente.dataset.id
         clienteService.removeCliente(id) //deletando cliente da API mas tb temos q deletar o elemento HTML
+        .then(() => {
+            linhaCliente.remove() //remover a tr inteira
+        })
 
     }
 })
@@ -39,6 +43,6 @@ tabela.addEventListener('click', (evento) =>{ // colocar um evento p escutar qdo
 clienteService.listaClientes() //fazendo uma promessa - qdo for compeltada vai retornar os dados
 .then(data =>{// .then -> então
     data.forEach(elemento => {
-        tabela.appendChild(criaNovaLinha(elemento.nome, elemento.email))// para cada cliente
+        tabela.appendChild(criaNovaLinha(elemento.nome, elemento.email, elemento.id))// para cada cliente
     })
 })
