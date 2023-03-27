@@ -44,6 +44,13 @@ Remover um elemento do dom com método remove()
 
 Deletar um cliente utilizando o verbo http DELETE
 
+04 - Editar Clientes:
+
+Fazer uma query string utilizando a propriedade searchParams.get() para encontrar um id.
+
+Criar uma IIFE ou função auto executável.
+
+Editar os dados utilizando o verbo http PUT.
 
 # Links
 Começando com fetch no Javascript -> https://www.alura.com.br/artigos/comecando-com-fetch-no-javascript
